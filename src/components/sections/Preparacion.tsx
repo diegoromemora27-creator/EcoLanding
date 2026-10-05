@@ -20,14 +20,14 @@ export function Preparacion() {
           setTimeout(() => setPhase(6), 7000); // QR
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.15 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [phase]);
 
   return (
-    <section id="preparacion" className="relative min-h-screen flex items-center overflow-hidden bg-eco-slate py-24" ref={ref}>
+    <section id="preparacion" className="relative min-h-screen flex items-center overflow-hidden bg-eco-slate py-16 sm:py-20 md:py-24" ref={ref}>
       {/* Image Background */}
       <motion.div className="absolute inset-0 z-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
         <div 
@@ -40,26 +40,26 @@ export function Preparacion() {
 
       {/* Giant Background Number to the left */}
       <div className="absolute -left-[10%] top-1/2 -translate-y-1/2 select-none pointer-events-none opacity-[0.03] z-0">
-        <span className="text-[600px] font-serif font-bold text-eco-accent">03</span>
+        <span className="text-[240px] sm:text-[400px] md:text-[600px] font-serif font-bold text-eco-accent">03</span>
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 flex flex-col items-center">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col items-center">
         {/* Header Content */}
-        <div className="text-center max-w-2xl mb-20">
-          <div className="font-mono text-xs text-eco-accent tracking-widest mb-6">
+        <div className="text-center max-w-2xl mb-10 sm:mb-14 md:mb-20">
+          <div className="font-mono text-xs text-eco-accent tracking-widest mb-3 sm:mb-6">
             03 · PREPARA TU CLASE EN SEGUNDOS
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-eco-chalk">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 text-eco-chalk">
             Sube tu material.<br />
             <span className="text-eco-accent font-serif italic">ECO arma todo tu ecosistema.</span>
           </h2>
-          <p className="text-xl text-eco-gray text-balance">
+          <p className="text-sm sm:text-lg md:text-xl text-eco-gray text-balance">
             Gemini analiza tu presentación y extrae preguntas de verificación. Mientras tanto, ECO organiza tus carpetas de Drive para dejarlas <span className="text-eco-chalk">IA-ready</span>, prepara tu Classroom y crea el Forms para la sesión. Todo el setup automático para que solo te enfoques en dar tu clase.
           </p>
         </div>
 
         {/* 3 Cards Flow Container */}
-        <div className="relative w-full max-w-5xl flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-8 lg:gap-4">
+        <div className="relative w-full max-w-5xl flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-6 lg:gap-4">
           
           {/* Card 1: TÚ APORTAS */}
           <motion.div 

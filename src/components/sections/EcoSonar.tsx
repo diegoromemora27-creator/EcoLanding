@@ -23,11 +23,11 @@ export function EcoSonar() {
             duration: 2,
             onUpdate: (latest) => setConceptScore(Math.round(latest)),
           });
-          setTimeout(() => setShowSuggestion(true), 3000);
+          setTimeout(() => setShowSuggestion(true), 2500);
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -40,7 +40,7 @@ export function EcoSonar() {
   const sectors = ["SINTAXIS", "CONCEPTO_BASE", "LÓGICA", "MÉTRICAS"];
 
   return (
-    <section id="eco" className="relative min-h-screen flex items-center overflow-hidden bg-eco-base py-24" ref={ref}>
+    <section id="eco" className="relative min-h-screen flex items-center overflow-hidden bg-eco-base py-16 sm:py-20 md:py-24" ref={ref}>
       {/* Background Section */}
       <motion.div className="absolute inset-0 z-0" style={{ y: yBg }}>
         <div 
@@ -53,28 +53,28 @@ export function EcoSonar() {
 
       {/* Number behind */}
       <div className="absolute left-10 top-1/2 -translate-y-1/2 select-none pointer-events-none opacity-5 z-0">
-        <span className="text-[400px] font-serif font-bold text-eco-accent">05</span>
+        <span className="text-[200px] sm:text-[300px] md:text-[400px] font-serif font-bold text-eco-accent">05</span>
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
         {/* Left Side: Text and Radar */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-12">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8 md:gap-12">
           <div className="max-w-lg">
-            <div className="font-mono text-xs text-eco-accent tracking-widest mb-6">
+            <div className="font-mono text-xs text-eco-accent tracking-widest mb-4 md:mb-6">
               05 · ECOSONAR · ANÁLISIS CON GEMINI
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-4 md:mb-6">
               El silencio también<br/>
               <span className="text-eco-accent font-serif italic">deja datos.</span>
             </h2>
-            <p className="text-xl text-eco-gray">
+            <p className="text-base sm:text-xl text-eco-gray">
               Gemini analiza las respuestas del exit ticket junto con los conceptos de tu clase. ECO detecta brechas, identifica falsa confianza y propone cómo abrir la siguiente sesión.
             </p>
           </div>
 
           {/* Radar Visualization */}
           <motion.div 
-            className="relative w-80 h-80 md:w-96 md:h-96"
+            className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 shrink-0"
             style={{ scale: radarScale, opacity: radarOpacity }}
           >
             {/* Background Pulse */}
@@ -154,7 +154,7 @@ export function EcoSonar() {
             className="bg-eco-slate/95 backdrop-blur-xl border border-eco-gray/20 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.8 }}
           >
             {/* 01 GEMINI LEE */}

@@ -31,7 +31,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.15 }
     );
 
     document.querySelectorAll("section[id]").forEach((section) => {
