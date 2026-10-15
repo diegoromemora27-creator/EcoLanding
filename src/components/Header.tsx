@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,19 +36,29 @@ export function Header() {
       {/* Logo */}
       <Link 
         href="/" 
-        className="flex items-center gap-1 group"
+        className="flex items-center group relative"
         onMouseEnter={() => setLogoHovered(true)}
         onMouseLeave={() => setLogoHovered(false)}
       >
-        <span className="font-serif text-2xl font-bold tracking-wider">ECO</span>
-        <div className="relative w-4 h-4 flex items-center justify-center">
-          <motion.div 
-            className="absolute rounded-full border-r-2 border-t-2 border-eco-accent w-3 h-3 rotate-45"
+        <div className="relative flex items-center">
+          {/* Ambient glow on hover */}
+          <motion.div
+            className="absolute -inset-2 rounded-full bg-eco-accent/20 blur-md pointer-events-none"
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{
-              scale: logoHovered ? [1, 1.5, 1] : 1,
-              opacity: logoHovered ? [0.5, 1, 0] : 0.5,
+              opacity: logoHovered ? 0.8 : 0,
+              scale: logoHovered ? 1.15 : 0.8,
             }}
-            transition={{ duration: 1, ease: "easeOut", repeat: logoHovered ? Infinity : 0 }}
+            transition={{ duration: 0.3 }}
+          />
+
+          <Image
+            src="/assets/EcoLogo.png"
+            alt="ECO Logo"
+            width={120}
+            height={78}
+            className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            priority
           />
         </div>
       </Link>
