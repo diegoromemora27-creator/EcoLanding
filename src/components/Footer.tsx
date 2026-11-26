@@ -9,7 +9,9 @@ export function Footer() {
   return (
     <footer className="bg-[#080d0b] pt-24 pb-12 relative overflow-hidden text-eco-chalk border-t border-eco-gray/10">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        
+        {/* Main Grid: Logo & Navigation */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
           {/* Logo & Description */}
           <div className="lg:col-span-2 flex flex-col gap-6">
@@ -63,6 +65,63 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Project Leadership & Credits Section */}
+        <div className="pt-10 pb-12 border-t border-eco-gray/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <span className="font-mono text-[11px] text-eco-accent tracking-widest uppercase font-semibold">
+                Dirección del Proyecto
+              </span>
+              <h4 className="text-lg font-bold text-eco-chalk font-serif mt-0.5">
+                Liderazgo y Desarrollo
+              </h4>
+            </div>
+            <span className="text-xs font-mono text-eco-gray/60">
+              ECO Learning Systems · Innovación Académica
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            
+            {/* Lic. Diego Romero Mora */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-eco-slate/50 border border-eco-gray/15 hover:border-eco-accent/40 transition-all duration-300 flex items-start gap-4 backdrop-blur-sm group">
+              <div className="w-12 h-12 rounded-xl bg-eco-accent/10 border border-eco-accent/25 flex items-center justify-center text-eco-accent font-mono text-base font-bold shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(124,255,178,0.1)]">
+                DR
+              </div>
+              <div className="flex flex-col">
+                <span className="text-base font-bold text-eco-chalk group-hover:text-eco-accent transition-colors">
+                  Lic. Diego Romero Mora
+                </span>
+                <span className="text-xs font-mono text-eco-accent mt-0.5 font-medium">
+                  Dirección técnica y desarrollo tecnológico
+                </span>
+                <p className="text-xs text-eco-gray mt-2 leading-relaxed">
+                  Arquitectura integral de la plataforma, integración de modelos de inteligencia artificial y desarrollo tecnológico continuo.
+                </p>
+              </div>
+            </div>
+
+            {/* Dr. Daniel de Jesús Atencio */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-eco-slate/50 border border-eco-gray/15 hover:border-eco-accent/40 transition-all duration-300 flex items-start gap-4 backdrop-blur-sm group">
+              <div className="w-12 h-12 rounded-xl bg-eco-accent/10 border border-eco-accent/25 flex items-center justify-center text-eco-accent font-mono text-base font-bold shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(124,255,178,0.1)]">
+                DA
+              </div>
+              <div className="flex flex-col">
+                <span className="text-base font-bold text-eco-chalk group-hover:text-eco-accent transition-colors">
+                  Dr. Daniel de Jesús Atencio
+                </span>
+                <span className="text-xs font-mono text-eco-accent mt-0.5 font-medium">
+                  Dirección conceptual y diseño pedagógico
+                </span>
+                <p className="text-xs text-eco-gray mt-2 leading-relaxed">
+                  Fundamentación pedagógica, diseño de metodologías de evaluación formativa y ciclo de retroalimentación en el aula.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
