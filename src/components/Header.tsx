@@ -78,19 +78,21 @@ export function Header() {
 
       {/* CTA Button */}
       <div className="relative group">
-        <motion.button
-          className="relative z-10 bg-eco-accent text-eco-slate px-5 py-2.5 rounded-full font-bold text-sm tracking-wide overflow-hidden hover:bg-eco-accent-alt transition-colors"
-          whileHover="hover"
-        >
-          <span className="relative z-10">Agendar demo</span>
-          <motion.div
-            className="absolute inset-0 bg-white/20 rounded-full origin-center"
-            initial={{ scale: 0, opacity: 0 }}
-            variants={{
-              hover: { scale: 2, opacity: 0, transition: { duration: 0.6, ease: "easeOut" } }
-            }}
-          />
-        </motion.button>
+        <Link href="#en-vivo">
+          <motion.button
+            className="relative z-10 bg-eco-accent text-eco-slate px-5 py-2.5 rounded-full font-bold text-sm tracking-wide overflow-hidden hover:bg-eco-accent-alt transition-colors cursor-pointer"
+            whileHover="hover"
+          >
+            <span className="relative z-10">Ver demo</span>
+            <motion.div
+              className="absolute inset-0 bg-white/20 rounded-full origin-center"
+              initial={{ scale: 0, opacity: 0 }}
+              variants={{
+                hover: { scale: 2, opacity: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
+            />
+          </motion.button>
+        </Link>
       </div>
     </header>
   );

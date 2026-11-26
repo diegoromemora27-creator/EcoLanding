@@ -103,12 +103,12 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <button className="bg-eco-chalk text-eco-base px-8 py-4 rounded-full font-bold hover:bg-white transition-colors">
+            <a href="#preparacion" className="bg-eco-chalk text-eco-base px-8 py-4 rounded-full font-bold hover:bg-white transition-colors inline-block">
               Ver cómo funciona
-            </button>
-            <button className="px-8 py-4 rounded-full font-bold border border-eco-gray/30 hover:border-eco-chalk transition-colors text-eco-chalk">
-              Agendar demo
-            </button>
+            </a>
+            <a href="#en-vivo" className="px-8 py-4 rounded-full font-bold border border-eco-gray/30 hover:border-eco-chalk transition-colors text-eco-chalk inline-block">
+              Ver demo en video
+            </a>
           </motion.div>
         </motion.div>
 

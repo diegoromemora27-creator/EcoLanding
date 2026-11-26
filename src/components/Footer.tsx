@@ -56,7 +56,7 @@ export function Footer() {
           <div>
             <h4 className="font-mono text-xs text-eco-gray tracking-widest mb-6">EMPEZAR</h4>
             <ul className="flex flex-col gap-4">
-              {["Agendar demo", "Contacto", "Casos de uso", "Privacidad"].map((link) => (
+              {["Demo en video", "Contacto", "Casos de uso", "Privacidad"].map((link) => (
                 <li key={link}>
                   <Link href={`#${link.toLowerCase().replace(/ /g, "-")}`} className="text-eco-chalk/80 hover:text-eco-accent transition-colors relative group inline-block">
                     {link}

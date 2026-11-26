@@ -1,16 +1,8 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { GeminiSparkle } from "../GeminiSparkle";
 
 export function Contacto() {
-  const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormState("submitting");
-    setTimeout(() => setFormState("success"), 2000);
-  };
-
   const metrics = [
     {
       value: "3",
@@ -69,7 +61,7 @@ export function Contacto() {
         }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col gap-16 md:gap-20">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col gap-14 md:gap-18">
         
         {/* Header & UNAM Validation */}
         <div className="max-w-3xl">
@@ -100,6 +92,47 @@ export function Contacto() {
             La plataforma ya está siendo utilizada por <strong className="text-eco-chalk font-semibold">personal docente de la UNAM</strong> en al menos 3 grupos de licenciatura, permitiendo mejorar la comprensión a tiempo de qué está pasando con los estudiantes antes de que fallen.
           </p>
         </div>
+
+        {/* Video Player Demo */}
+        <motion.div
+          className="w-full max-w-5xl mx-auto flex flex-col"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="bg-eco-base/95 border border-eco-gray/20 rounded-2xl shadow-[0_0_50px_rgba(124,255,178,0.08)] overflow-hidden">
+            {/* Player Top Bar */}
+            <div className="bg-eco-base px-4 sm:px-6 py-3 flex items-center justify-between border-b border-eco-gray/10">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#FF5F56]/80" />
+                <div className="w-3 h-3 rounded-full bg-[#FFBD2E]/80" />
+                <div className="w-3 h-3 rounded-full bg-[#27C93F]/80" />
+                <span className="ml-3 font-mono text-xs text-eco-gray hidden sm:inline">
+                  demo-completa-aula-eco.mp4 (10 min)
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono text-eco-accent bg-eco-accent/10 px-2.5 py-1 rounded-full border border-eco-accent/20 flex items-center gap-1.5">
+                  <GeminiSparkle className="text-eco-accent text-xs" />
+                  Demostración en Video
+                </span>
+              </div>
+            </div>
+
+            {/* Responsive Iframe */}
+            <div className="relative aspect-video w-full bg-black">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube-nocookie.com/embed/4e2CqpFwKCg?rel=0&modestbranding=1"
+                title="Demostración de la plataforma ECO en clase"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </motion.div>
 
         {/* Statistics & Impact Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -151,156 +184,62 @@ export function Contacto() {
           ))}
         </div>
 
-        {/* Two-Column Grid: Leadership & Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          {/* Left Column: Team / Direction & Guarantees */}
-          <div className="lg:col-span-6 flex flex-col gap-8">
+        {/* Project Leadership & Academic Direction */}
+        <div className="flex flex-col gap-6 pt-6 border-t border-eco-gray/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-mono text-xs text-eco-accent tracking-widest uppercase font-semibold">
                 Dirección del Proyecto
               </span>
-              <h3 className="text-2xl font-bold text-eco-chalk font-serif mt-1">
+              <h3 className="text-2xl sm:text-3xl font-bold text-eco-chalk font-serif mt-1">
                 Liderazgo y Desarrollo
               </h3>
-              <p className="text-sm text-eco-gray mt-2">
-                Innovación tecnológica y conceptual para transformar la docencia universitaria.
-              </p>
             </div>
-
-            {/* Leadership Cards */}
-            <div className="flex flex-col gap-4">
-              {team.map((person, i) => (
-                <motion.div
-                  key={i}
-                  className="p-5 rounded-2xl bg-eco-base/80 border border-eco-gray/15 hover:border-eco-accent/30 transition-all duration-300 flex items-start gap-4 backdrop-blur-sm group shadow-lg"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                >
-                  <div className="w-11 h-11 rounded-xl bg-eco-accent/10 border border-eco-accent/25 flex items-center justify-center text-eco-accent font-mono text-sm font-bold shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(124,255,178,0.1)]">
-                    {person.initials}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-base font-bold text-eco-chalk group-hover:text-eco-accent transition-colors">
-                      {person.name}
-                    </span>
-                    <span className="text-xs font-mono text-eco-accent mt-0.5 font-medium">
-                      {person.role}
-                    </span>
-                    <p className="text-xs text-eco-gray mt-2 leading-relaxed">
-                      {person.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Trust points */}
-            <div className="pt-4 border-t border-eco-gray/10 flex flex-col gap-4">
-              {[
-                "Respuesta en menos de 24 h",
-                "Demo guiada de 20 minutos con tu material",
-                "Tus archivos y datos permanecen en tu Google Workspace",
-              ].map((text, i) => (
-                <div key={i} className="flex items-center gap-3.5 text-sm text-eco-chalk/80">
-                  <div className="w-5 h-5 rounded-full bg-eco-base flex items-center justify-center flex-shrink-0 border border-eco-accent/30 text-eco-accent">
-                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
+            <span className="text-xs font-mono text-eco-gray/70">
+              ECO · Innovación Pedagógica y Tecnológica
+            </span>
           </div>
 
-          {/* Right Column: Form */}
-          <div className="lg:col-span-6">
-            <form 
-              onSubmit={handleSubmit}
-              className="bg-eco-base/90 p-6 sm:p-8 rounded-2xl border border-eco-gray/20 shadow-2xl flex flex-col gap-5 backdrop-blur-md"
-            >
-              <div>
-                <h3 className="text-xl font-bold text-eco-chalk mb-1">
-                  Agenda una sesión o solicita acceso
-                </h3>
-                <p className="text-xs text-eco-gray">
-                  Cuéntanos qué asignatura impartes y cómo te gustaría integrar ECO.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[11px] font-mono text-eco-gray tracking-widest uppercase">Nombre</label>
-                  <input
-                    required
-                    type="text"
-                    placeholder="Tu nombre"
-                    className="bg-eco-slate/50 border border-eco-gray/20 rounded-lg px-3.5 py-2.5 text-sm text-eco-chalk focus:outline-none focus:border-eco-accent transition-colors"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[11px] font-mono text-eco-gray tracking-widest uppercase">Institución</label>
-                  <input
-                    required
-                    type="text"
-                    placeholder="Ej. UNAM, Facultad..."
-                    className="bg-eco-slate/50 border border-eco-gray/20 rounded-lg px-3.5 py-2.5 text-sm text-eco-chalk focus:outline-none focus:border-eco-accent transition-colors"
-                  />
-                </div>
-              </div>
-              
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-eco-gray tracking-widest uppercase">Correo Institucional / Electrónico</label>
-                <input
-                  required
-                  type="email"
-                  placeholder="correo@ejemplo.edu.mx"
-                  className="bg-eco-slate/50 border border-eco-gray/20 rounded-lg px-3.5 py-2.5 text-sm text-eco-chalk focus:outline-none focus:border-eco-accent transition-colors"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-eco-gray tracking-widest uppercase">Asignatura o Nivel</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="Ej. Sistemas Distribuidos, 4° semestre"
-                  className="bg-eco-slate/50 border border-eco-gray/20 rounded-lg px-3.5 py-2.5 text-sm text-eco-chalk focus:outline-none focus:border-eco-accent transition-colors"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-eco-gray tracking-widest uppercase">Mensaje (Opcional)</label>
-                <textarea
-                  rows={3}
-                  placeholder="¿Qué reto de comprensión te gustaría resolver primero?"
-                  className="bg-eco-slate/50 border border-eco-gray/20 rounded-lg px-3.5 py-2.5 text-sm text-eco-chalk focus:outline-none focus:border-eco-accent transition-colors resize-none"
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                disabled={formState === "submitting" || formState === "success"}
-                className="relative mt-2 bg-eco-accent text-eco-slate py-3.5 rounded-xl font-bold text-sm tracking-wide overflow-hidden transition-all disabled:opacity-80 group cursor-pointer hover:bg-eco-accent-alt"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {team.map((person, i) => (
+              <motion.div
+                key={i}
+                className="p-6 rounded-2xl bg-eco-base/80 border border-eco-gray/15 hover:border-eco-accent/30 transition-all duration-300 flex items-start gap-4 backdrop-blur-sm group shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
               >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  {formState === "idle" && "Solicitar acceso / demo"}
-                  {formState === "submitting" && (
-                    <><div className="w-4 h-4 border-2 border-eco-slate/30 border-t-eco-slate rounded-full animate-spin" /> Enviando...</>
-                  )}
-                  {formState === "success" && "Solicitud enviada ✓"}
-                </span>
-                
-                {formState === "idle" && (
-                  <div className="absolute inset-0 border border-eco-slate/20 rounded-xl group-hover:scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none" />
-                )}
-              </button>
-            </form>
+                <div className="w-12 h-12 rounded-xl bg-eco-accent/10 border border-eco-accent/25 flex items-center justify-center text-eco-accent font-mono text-base font-bold shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(124,255,178,0.1)]">
+                  {person.initials}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold text-eco-chalk group-hover:text-eco-accent transition-colors">
+                    {person.name}
+                  </span>
+                  <span className="text-xs font-mono text-eco-accent mt-0.5 font-medium">
+                    {person.role}
+                  </span>
+                  <p className="text-xs text-eco-gray mt-2.5 leading-relaxed">
+                    {person.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
+          {/* Institutional Note */}
+          <div className="mt-4 p-5 rounded-2xl bg-eco-base/50 border border-eco-gray/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-eco-gray">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-eco-accent" />
+              <span>
+                Tus archivos y datos pedagógicos permanecen seguros en tu Google Workspace institucional.
+              </span>
+            </div>
+            <div className="font-mono text-eco-chalk/70 shrink-0">
+              UNAM · Investigación y Docencia
+            </div>
+          </div>
         </div>
 
       </div>
